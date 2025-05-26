@@ -1,0 +1,32 @@
+{
+  "scenarios": [
+    {
+      "scenario_id": "TS_XXXX",
+      "scenario_title": "",
+      "scenario_description": "",
+      "scenario_tags": [],
+      "scenario_precondition": "",
+      "test_cases": [
+        {
+          "case_id": "TC_XXXX_XX",
+          "case_title": "",
+          "case_requirementId": "",
+          "case_preconditions": [],
+          "case_inputs": [
+            {
+              "input_type": "",
+              "input_desc": "",
+              "input_value": ""
+            }
+          ],
+          "expected_output": {
+            "status_code": 0,
+            "results": ""
+          }
+        }
+      ],
+      "scenario_creationDateTime": "",
+      "scenario_lastUpdateDateTime": ""
+    }
+  ]
+}

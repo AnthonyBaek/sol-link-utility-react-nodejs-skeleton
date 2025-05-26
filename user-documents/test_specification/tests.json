@@ -1,32 +1,254 @@
 {
   "scenarios": [
     {
-      "scenario_id": "TS_XXXX",
-      "scenario_title": "",
-      "scenario_description": "",
-      "scenario_tags": [],
-      "scenario_precondition": "",
+      "scenario_id": "TS_0001",
+      "scenario_title": "유틸리티 선택 드롭다운 동작 시나리오",
+      "scenario_description": "상단 바에서 유틸리티를 선택하고, 작업 영역이 변경되는지 검증한다.",
+      "scenario_tags": ["유틸리티선택", "드롭다운", "작업영역"],
+      "scenario_precondition": "서버가 실행 중이어야 하며, 여러 유틸리티가 등록되어 있어야 한다.",
       "test_cases": [
         {
-          "case_id": "TC_XXXX_XX",
-          "case_title": "",
-          "case_requirementId": "",
+          "case_id": "TC_0001_01",
+          "case_title": "드롭다운 렌더링 및 선택",
+          "case_requirementId": "UTL_FR_0001_01",
           "case_preconditions": [],
           "case_inputs": [
-            {
-              "input_type": "",
-              "input_desc": "",
-              "input_value": ""
-            }
+            { "input_type": "사용자 이벤트", "input_desc": "상단 바 드롭다운 클릭", "input_value": "유틸리티 선택 드롭다운 클릭" }
           ],
           "expected_output": {
-            "status_code": 0,
-            "results": ""
+            "status_code": 200,
+            "results": "드롭다운에 등록된 유틸리티 목록이 표시된다."
+          }
+        },
+        {
+          "case_id": "TC_0001_02",
+          "case_title": "유틸리티 선택 시 작업 페이지 이동",
+          "case_requirementId": "UTL_FR_0001_02",
+          "case_preconditions": [],
+          "case_inputs": [
+            { "input_type": "사용자 이벤트", "input_desc": "드롭다운에서 특정 유틸리티 선택", "input_value": "유틸리티A 선택" }
+          ],
+          "expected_output": {
+            "status_code": 200,
+            "results": "선택한 유틸리티의 작업 페이지가 작업 영역에 표시된다."
+          }
+        },
+        {
+          "case_id": "TC_0001_03",
+          "case_title": "작업 영역 동적 변경",
+          "case_requirementId": "UTL_FR_0001_03",
+          "case_preconditions": [],
+          "case_inputs": [
+            { "input_type": "사용자 이벤트", "input_desc": "다른 유틸리티 선택", "input_value": "유틸리티B 선택" }
+          ],
+          "expected_output": {
+            "status_code": 200,
+            "results": "작업 영역이 유틸리티B의 작업 페이지로 동적으로 변경된다."
           }
         }
       ],
-      "scenario_creationDateTime": "",
-      "scenario_lastUpdateDateTime": ""
+      "scenario_creationDateTime": "2024-03-21T16:30:00+09:00",
+      "scenario_lastUpdateDateTime": "2024-03-21T16:30:00+09:00"
+    },
+    {
+      "scenario_id": "TS_0002",
+      "scenario_title": "툴 버튼 및 Side Peek 동작 시나리오",
+      "scenario_description": "툴 버튼 클릭 시 Side Peek가 정상적으로 동작하는지 검증한다.",
+      "scenario_tags": ["툴버튼", "SidePeek", "슬라이드"],
+      "scenario_precondition": "서버가 실행 중이어야 하며, 툴 버튼이 활성화되어 있어야 한다.",
+      "test_cases": [
+        {
+          "case_id": "TC_0002_01",
+          "case_title": "툴 버튼 렌더링",
+          "case_requirementId": "UTL_FR_0002_01",
+          "case_preconditions": [],
+          "case_inputs": [
+            { "input_type": "자동", "input_desc": "페이지 진입 시 상단 바 렌더링", "input_value": "초기 진입" }
+          ],
+          "expected_output": {
+            "status_code": 200,
+            "results": "상단 바 우측에 툴 버튼(T₁, T₂, T₃ 등)이 표시된다."
+          }
+        },
+        {
+          "case_id": "TC_0002_02",
+          "case_title": "툴 버튼 클릭 시 Side Peek 슬라이드",
+          "case_requirementId": "UTL_FR_0002_02",
+          "case_preconditions": [],
+          "case_inputs": [
+            { "input_type": "사용자 이벤트", "input_desc": "툴 버튼 클릭", "input_value": "T1 클릭" }
+          ],
+          "expected_output": {
+            "status_code": 200,
+            "results": "우측에 Side Peek가 슬라이드로 열린다."
+          }
+        },
+        {
+          "case_id": "TC_0002_03",
+          "case_title": "Side Peek 닫기 및 너비 조절",
+          "case_requirementId": "UTL_FR_0002_03",
+          "case_preconditions": ["Side Peek가 열린 상태"],
+          "case_inputs": [
+            { "input_type": "사용자 이벤트", "input_desc": "Side Peek 닫기 버튼 클릭 및 너비 조절", "input_value": "닫기 클릭, 너비 드래그" }
+          ],
+          "expected_output": {
+            "status_code": 200,
+            "results": "Side Peek가 닫히고, 너비 조절 시 반응형 UI가 적용된다."
+          }
+        }
+      ],
+      "scenario_creationDateTime": "2024-03-21T16:30:00+09:00",
+      "scenario_lastUpdateDateTime": "2024-03-21T16:30:00+09:00"
+    },
+    {
+      "scenario_id": "TS_0003",
+      "scenario_title": "섹션별 작업 및 컨트롤 시나리오",
+      "scenario_description": "작업 영역 내 섹션(Accordion) 및 컨트롤 버튼 그룹 동작을 검증한다.",
+      "scenario_tags": ["섹션", "Accordion", "컨트롤버튼"],
+      "scenario_precondition": "서버가 실행 중이어야 하며, 여러 섹션이 정의되어 있어야 한다.",
+      "test_cases": [
+        {
+          "case_id": "TC_0003_01",
+          "case_title": "여러 섹션 렌더링",
+          "case_requirementId": "UTL_FR_0003_01",
+          "case_preconditions": [],
+          "case_inputs": [
+            { "input_type": "자동", "input_desc": "작업 영역 렌더링", "input_value": "초기 진입" }
+          ],
+          "expected_output": {
+            "status_code": 200,
+            "results": "여러 섹션(Accordion)이 작업 영역에 표시된다."
+          }
+        },
+        {
+          "case_id": "TC_0003_02",
+          "case_title": "섹션별 컨트롤 버튼 그룹 표시",
+          "case_requirementId": "UTL_FR_0003_02",
+          "case_preconditions": [],
+          "case_inputs": [
+            { "input_type": "자동", "input_desc": "섹션 렌더링 시 컨트롤 버튼 표시", "input_value": "섹션별 컨트롤 버튼" }
+          ],
+          "expected_output": {
+            "status_code": 200,
+            "results": "각 섹션별로 컨트롤 버튼 그룹이 표시된다."
+          }
+        },
+        {
+          "case_id": "TC_0003_03",
+          "case_title": "섹션 접기/펼치기 동작",
+          "case_requirementId": "UTL_FR_0003_03",
+          "case_preconditions": [],
+          "case_inputs": [
+            { "input_type": "사용자 이벤트", "input_desc": "섹션 헤더 클릭", "input_value": "Section1 헤더 클릭" }
+          ],
+          "expected_output": {
+            "status_code": 200,
+            "results": "해당 섹션이 접히거나 펼쳐진다."
+          }
+        }
+      ],
+      "scenario_creationDateTime": "2024-03-21T16:30:00+09:00",
+      "scenario_lastUpdateDateTime": "2024-03-21T16:30:00+09:00"
+    },
+    {
+      "scenario_id": "TS_0004",
+      "scenario_title": "SPA 및 동적 반영 시나리오",
+      "scenario_description": "주요 인터랙션이 SPA 방식으로 즉시 반영되는지 검증한다.",
+      "scenario_tags": ["SPA", "동적반영"],
+      "scenario_precondition": "서버가 실행 중이어야 한다.",
+      "test_cases": [
+        {
+          "case_id": "TC_0004_01",
+          "case_title": "툴 선택/섹션 토글 시 SPA 반영",
+          "case_requirementId": "UTL_FR_0004_01",
+          "case_preconditions": [],
+          "case_inputs": [
+            { "input_type": "사용자 이벤트", "input_desc": "툴 버튼 클릭, 섹션 토글", "input_value": "T1 클릭, Section1 토글" }
+          ],
+          "expected_output": {
+            "status_code": 200,
+            "results": "화면이 새로고침 없이 즉시 반영된다."
+          }
+        }
+      ],
+      "scenario_creationDateTime": "2024-03-21T16:30:00+09:00",
+      "scenario_lastUpdateDateTime": "2024-03-21T16:30:00+09:00"
+    },
+    {
+      "scenario_id": "TS_0005",
+      "scenario_title": "UI/UX 비기능 요구사항 시나리오",
+      "scenario_description": "공통 레이아웃, Side Peek, 반응형, 접근성 등 비기능 요구사항을 검증한다.",
+      "scenario_tags": ["UIUX", "비기능", "반응형", "접근성"],
+      "scenario_precondition": "서버가 실행 중이어야 하며, 다양한 해상도와 유틸리티가 준비되어 있어야 한다.",
+      "test_cases": [
+        {
+          "case_id": "TC_0005_01",
+          "case_title": "공통 레이아웃 렌더링",
+          "case_requirementId": "UTL_NFR_0001_01",
+          "case_preconditions": [],
+          "case_inputs": [
+            { "input_type": "자동", "input_desc": "초기 진입 시 레이아웃 렌더링", "input_value": "초기 진입" }
+          ],
+          "expected_output": {
+            "status_code": 200,
+            "results": "상단 바, 작업 영역, 스크롤바 등 공통 레이아웃이 정상적으로 표시된다."
+          }
+        },
+        {
+          "case_id": "TC_0005_02",
+          "case_title": "로고 클릭 시 메인 이동 및 Side Peek 닫힘",
+          "case_requirementId": "UTL_NFR_0001_01_01",
+          "case_preconditions": ["Side Peek가 열린 상태"],
+          "case_inputs": [
+            { "input_type": "사용자 이벤트", "input_desc": "로고 클릭", "input_value": "로고 클릭" }
+          ],
+          "expected_output": {
+            "status_code": 200,
+            "results": "해당 유틸리티의 메인 화면으로 이동하며, Side Peek가 닫힌다."
+          }
+        },
+        {
+          "case_id": "TC_0005_03",
+          "case_title": "유틸리티 선택 시 작업영역 및 버튼 그룹 표시",
+          "case_requirementId": "UTL_NFR_0001_01_02",
+          "case_preconditions": [],
+          "case_inputs": [
+            { "input_type": "사용자 이벤트", "input_desc": "유틸리티 선택", "input_value": "유틸리티A 선택" }
+          ],
+          "expected_output": {
+            "status_code": 200,
+            "results": "작업영역에 해당 유틸리티 화면과 버튼 그룹이 표시된다."
+          }
+        },
+        {
+          "case_id": "TC_0005_04",
+          "case_title": "Side Peek 인터랙션 및 반응형 UI",
+          "case_requirementId": "UTL_NFR_0001_04_01",
+          "case_preconditions": ["Side Peek가 열린 상태"],
+          "case_inputs": [
+            { "input_type": "사용자 이벤트", "input_desc": "툴 버튼 클릭, Side Peek 너비 조절", "input_value": "T1 클릭, Side Peek 드래그" }
+          ],
+          "expected_output": {
+            "status_code": 200,
+            "results": "툴별로 각기 다른 컨트롤 버튼/화면이 표시되고, Side Peek 너비 조절 시 반응형 UI가 적용된다."
+          }
+        },
+        {
+          "case_id": "TC_0005_05",
+          "case_title": "SPA, 스크롤바, 반응형, 접근성 검증",
+          "case_requirementId": "UTL_NFR_0001_05",
+          "case_preconditions": [],
+          "case_inputs": [
+            { "input_type": "자동", "input_desc": "여러 해상도 및 입력환경에서 동작 확인", "input_value": "다양한 해상도, 키보드 접근" }
+          ],
+          "expected_output": {
+            "status_code": 200,
+            "results": "SPA, 스크롤바 자동 표시, 반응형, 접근성(키보드, 스크린리더 등) 모두 정상 동작한다."
+          }
+        }
+      ],
+      "scenario_creationDateTime": "2024-03-21T16:30:00+09:00",
+      "scenario_lastUpdateDateTime": "2024-03-21T16:30:00+09:00"
     }
   ]
 }
