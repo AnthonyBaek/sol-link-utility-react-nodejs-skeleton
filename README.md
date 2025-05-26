@@ -3,6 +3,9 @@
 [![Build Status](https://travis-ci.org/joemccann/dillinger.svg?branch=master)](https://travis-ci.org/joemccann/dillinger) [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 
+- ***`Cursor`*** 혹은 ***`Windsurf`*** 등의 AI 기반 IDE를 사용 시, 본 `README.md` 파일의 관리는 에이전트에 의해 자동적으로 생성하는 것을 권장함
+    - 또한, AI의 Hallucination을 줄이기 위해 `Context7` MCP를 함께 사용할 것을 권장함 [(Context7 MCP GitHub Repository)](https://github.com/upstash/context7)
+
 ## 프로젝트 개요
 
 (프로젝트 로고나 핵심 기능을 나타내는 스크린샷 - 선택 사항)
@@ -64,6 +67,9 @@ npm run dev
 ```
 
 ## 프로젝트 구조
+
+- 아래는 프로젝트 구조의 예시입니다.
+
 ```
 [project-name]/                    # 프로젝트 루트 디렉토리
 ├── backend/                      # 백엔드 애플리케이션 디렉토리
@@ -103,7 +109,8 @@ npm test
 ```
 
 ## 저작권 및 라이선스
-[라이선스 정보]
+- (주)솔루션링크
+- [라이선스 정보]
 이 프로젝트는 [라이선스 이름 - 예: MIT] 라이선스를 따릅니다. 자세한 내용은 LICENSE 파일을 참고해주세요.
 
 ## 기여
